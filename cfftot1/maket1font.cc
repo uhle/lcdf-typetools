@@ -454,10 +454,10 @@ MakeType1CharstringInterp::run(const CharstringProgram *program, Type1Font *outp
         PermString name = program->glyph_name(i);
         if (output->glyph(name)) {
             errh->warning("glyph %<%s%> defined more than once", name.c_str());
-            int i = 1;
+            int j = 1;
             do {
-                name = program->glyph_name(i) + String(".") + String(i);
-                ++i;
+                name = program->glyph_name(i) + String(".") + String(j);
+                ++j;
             } while (output->glyph(name));
         }
         output->add_glyph(Type1Subr::make_glyph(name, receptacle, glyph_definer));
